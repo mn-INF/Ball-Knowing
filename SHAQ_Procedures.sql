@@ -1,3 +1,7 @@
+'''
+1. RosterStats -> Getting the PPG, APG, RPG, for all the players on a given team & season (regular and playoffs separate)
+'''
+
 CREATE OR REPLACE FUNCTION RosterStats(
 team_name VARCHAR(100), 
 season INT,
@@ -21,9 +25,17 @@ ORDER BY description DESC;
 END; 
 $$ LANGUAGE plpgsql;
 
+'''
+Sample calls:
+'''
+	
 SELECT * FROM RosterStats('Boston Celtics', 2017, 1);
 SELECT * FROM RosterStats('Detroit Pistons', 2006, 0);
 SELECT * FROM RosterStats('Cleveland Cavaliers', 2015, 1);
+
+'''
+2. PPGRank -> Top N PPG for a given season and player limit
+'''
 
 CREATE OR REPLACE FUNCTION PPGRank( 
 season INT,
@@ -46,8 +58,16 @@ LIMIT player_limit;
 END; 
 $$ LANGUAGE plpgsql;
 
+'''
+Sample call:
+'''
+	
 SELECT * FROM PPGRank(2012, 10)
 
+'''
+3. APGRank -> Top N APG for a given season and player limit
+'''
+	
 CREATE OR REPLACE FUNCTION APGRank( 
 season INT,
 player_limit INT
@@ -69,8 +89,16 @@ LIMIT player_limit;
 END; 
 $$ LANGUAGE plpgsql;
 
+'''
+Sample call:
+'''
+	
 SELECT * FROM APGRank(2019, 5)
 
+'''
+4. RPGRank -> Top N RPG for a given season and player limit
+'''
+	
 CREATE OR REPLACE FUNCTION RPGRank( 
 season INT,
 player_limit INT
@@ -92,8 +120,16 @@ LIMIT player_limit;
 END; 
 $$ LANGUAGE plpgsql;
 
+'''
+Sample call:
+'''
+	
 SELECT * FROM RPGRank (2008, 3)
-
+	
+'''
+5. PlayerHistory -> Pull out a single player’s ENTIRE statline (for career, option to go regular season or playoffs)
+'''
+	
 CREATE OR REPLACE FUNCTION PlayerHistory( 
 p_first_name VARCHAR(255),
 p_last_name VARCHAR(255),
@@ -123,6 +159,9 @@ ORDER BY season_id DESC;
 END; 
 $$ LANGUAGE plpgsql;
 
+'''
+Sample calls:
+'''
+	
 SELECT * FROM PlayerHistory(‘Kobe’, ‘Bryant’, 1)
-
 SELECT * FROM PlayerHistory(‘LeBron’, ‘James’, 0)
