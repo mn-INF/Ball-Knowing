@@ -1,5 +1,5 @@
 '''
-LeBron James vs. Michael Jordan
+Individual Player Stat Queries: LeBron James vs. Michael Jordan
 - Yeah we’re doing this.
   
 Pulling out LeBron’s averages for EVERYTHING for every season:
