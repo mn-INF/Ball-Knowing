@@ -131,3 +131,51 @@ Sample Call:
 ```
 SELECT * FROM RPGRank (2008, 3)
 ```
+
+3. PlayerHistory
+- Pull out a single player’s ENTIRE statline (for career, option to go regular season or playoffs)
+
+```
+CREATE OR REPLACE FUNCTION PlayerHistory( 
+p_first_name VARCHAR(255),
+p_last_name VARCHAR(255),
+season_type INT
+)
+RETURNS TABLE (szn INT, f_name VARCHAR(255), l_name VARCHAR(255),
+full_team_name VARCHAR(100), ppg DECIMAL, apg DECIMAL, rpg DECIMAL,
+spg DECIMAL, bpg DECIMAL, pct_fg DECIMAL, pct_3 DECIMAL, ftp DECIMAL)
+AS $$
+BEGIN
+    RETURN QUERY SELECT DISTINCT season_id, first_name, last_name,
+full_name,
+ROUND(SUM(pts*1.0/games_played), 1) as ppg,
+ROUND(SUM(trb*1.0/games_played), 1) as rpg,
+ROUND(SUM(ast*1.0/games_played), 1) as apg,
+ROUND(SUM(stl*1.0/games_played), 1) as spg,
+ROUND(SUM(blk*1.0/games_played), 1) as bpg,
+ROUND(SUM((pm_2 + pm_3)*100.0/(pa_2 + pa_3)), 1) as pct_fg,
+ROUND(SUM(pm_3*100.0/pa_3), 1) as pct_3,
+ROUND(SUM(ftm*100.0/fta), 1) as ftp
+FROM player_season_stat_totals as psst
+JOIN players as pl ON psst.player_id = pl.player_id
+JOIN teams ON psst.team_id = teams.team_id
+WHERE first_name LIKE p_first_name AND last_name LIKE p_last_name AND season_type_id = season_type
+GROUP BY season_id, first_name, last_name, full_name
+ORDER BY season_id DESC;
+END; 
+$$ LANGUAGE plpgsql;
+```
+
+Sample Calls:
+
+```
+SELECT * FROM PlayerHistory(‘Kobe’, ‘Bryant’, 1)
+```
+
+-	Playoff data for Kobe Bryant
+
+```
+SELECT * FROM PlayerHistory(‘LeBron’, ‘James’, 0)
+```
+
+-	Regular Season data for LeBron
