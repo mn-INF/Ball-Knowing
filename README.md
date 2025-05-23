@@ -5,10 +5,10 @@ While I was learning how to make queries in SQL, I downloaded a multiple tables 
 
 The downloaded tables include:
 - League seasons
-- Leagues
+- Leagues (NBA/ABA)
 - Player season stat totals
 - Players
-- Season types
+- Season types (regular season/playoffs)
 - Team seasons
 - Teams
 
