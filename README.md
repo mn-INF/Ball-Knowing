@@ -11,7 +11,7 @@ The downloaded tables include:
 - Leagues (NBA/ABA)
 - Player season stat totals
 - Players
-- Season types (regular season/playoffs)
+- Season types (regular season = 0, playoffs = 1)
 - Team seasons
 - Teams
 
