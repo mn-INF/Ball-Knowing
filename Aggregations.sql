@@ -16,7 +16,7 @@ ORDER BY season_id ASC, description DESC, full_name ASC;
 Highest PPG, APG, RPG (basic, just getting them out first for all seasons)
 - Top 5 for a given season (regular season, playoffs)
 
-Top 5 PPG for 2018-2019 season:
+Top 5 PPG for 2018-2019 regular season:
 '''
 SELECT season_id, first_name, last_name, full_name, 
 ROUND(SUM(pts*1.0/games_played), 1) as ppg
@@ -29,7 +29,7 @@ ORDER BY SUM(pts*1.0/games_played) DESC
 LIMIT 5;
 
 '''
-Top 5 APG for 2008-2009 season:
+Top 5 APG for 2008-2009 regular season:
 '''
   
 SELECT season_id, first_name, last_name, full_name, 
@@ -59,7 +59,7 @@ LIMIT 5;
 '''
 Total points, total assists, total rebounds
   
-Top 25 all-time points leaders (as of 2020-2021 season):
+Top 25 all-time points leaders (as of 2020-2021 regular season):
 '''
   
 SELECT first_name, last_name, SUM(pts)
@@ -72,7 +72,7 @@ ORDER BY SUM(pts) DESC
 LIMIT 25;
 
 '''
-Top 25 all-time assist leaders (as of 2020-2021 season):
+Top 25 all-time assist leaders (as of 2020-2021 regular season):
 '''
   
 SELECT first_name, last_name, SUM(ast)
@@ -85,7 +85,7 @@ ORDER BY SUM(ast) DESC
 LIMIT 25;
 
 '''
-Top 25 all-time rebound leaders (as of 2020-2021 season):
+Top 25 all-time rebound leaders (as of 2020-2021 regular season):
 '''
   
 SELECT first_name, last_name, SUM(trb)
