@@ -1,4 +1,6 @@
 '''
+These procedures are callable functions that we can store and then use to get us all the information from the SHAQ Database.
+	
 1. RosterStats -> Getting the PPG, APG, RPG, for all the players on a given team & season (regular and playoffs separate)
 '''
 
