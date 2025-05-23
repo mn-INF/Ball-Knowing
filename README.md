@@ -1,7 +1,7 @@
 # Ball-Knowing
-Location for SQL queries on the Shared Hoops Database for Accessible Querying (SHAQ)
+Location for SQL queries on the Shared Hoops Database for Accessible Querying (SHAQ) (https://www.dolthub.com/repositories/teltorob/SHAQ/schema/main)
 
-While I was learning how to make queries in SQL, I downloaded a multiple tables of basketball data and combined them into a SQL database. 
+While I was learning how to make queries in SQL, I downloaded multiple tables of basketball data and combined them into a SQL database. 
 
 The downloaded tables include:
 - League seasons
