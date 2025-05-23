@@ -1,3 +1,10 @@
+'''
+LeBron James vs. Michael Jordan
+- Yeah we’re doing this.
+  
+Pulling out LeBron’s averages for EVERYTHING for every season:
+''' 
+
 SELECT DISTINCT season_id, CONCAT(first_name, ' ', last_name) as player_name,
 full_name,
 ROUND(SUM(pts*1.0/games_played), 1) as ppg,
@@ -15,6 +22,10 @@ WHERE first_name LIKE 'LeBron' AND season_type_id = 0
 GROUP BY season_id, CONCAT(first_name, ' ', last_name), full_name
 ORDER BY season_id DESC;
 
+'''
+Same thing for Jordan
+'''
+  
 SELECT season_id, CONCAT(first_name, ' ', last_name) as player_name,
 full_name,
 ROUND(SUM(pts*1.0/games_played), 1) as ppg,
