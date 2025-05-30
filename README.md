@@ -6,7 +6,7 @@ Location for SQL queries on the Shared Hoops Database for Accessible Querying (S
 
 While I was learning how to make queries in SQL, I downloaded multiple tables of basketball data and combined them into a SQL database. 
 
-The downloaded tables include:
+The downloaded tables in the schema include:
 - League seasons
 - Leagues (NBA/ABA)
 - Player season stat totals
@@ -15,4 +15,12 @@ The downloaded tables include:
 - Team seasons
 - Teams
 
+![image](https://github.com/user-attachments/assets/015ef711-d6ed-4a92-b206-a34cabf39ddc)
+
+
 This repository and the queries along with it are a fun take on working on new SQL queries to derive insights about NBA players and teams.
+
+MISCELLANEOUS GUIDELINES:
+-snake_case, not camelCase
+-No special characters in names (e.g. Luka Doncic, not Luka Dončić). This decision makes it easier to match players to different public data sources, most of which do not use special characters.
+-A season_type differentiates both team_seasons and player_seasons between preseason, regular season, playoffs, all-star, etc.
